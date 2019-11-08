@@ -5,6 +5,7 @@ import os
 import sys
 import requests
 import random
+import string
 
 class Setup:
     def __init__(self):
@@ -113,24 +114,99 @@ class Command:
                 log = 'MATH FUNCTION ONLY WORKS WITH NUMBERS.'
                 return log
 
-        if 'RANDOM' in user.command and config.random and len(user.command) > 1:
+        if 'RAND' in user.command and config.random and len(user.command) > 1:
             if 'IMGUR' in user.command:
-                characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+                              's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                              'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1',
+                              '2', '3', '4', '5', '6', '7', '8', '9']
                 address = requests.get('https://i.imgur.com/removed.png')
                 while address.url == 'https://i.imgur.com/removed.png' or '.jpg' not in address.url:
                     imgur = 'https://i.imgur.com/' + ''.join(random.choices(characters, weights=None, k=random.randint(5, 7))) + '.jpg'
                     address = requests.get(imgur)
-                    print('IMGUR:', imgur, 'ADDRESS:', address.url)
-
                 log = ['']
                 log.append(address.url)
                 log.append('')
                 log.append('')
                 return log
-
+            if 'YOU' in user.command:
+                characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+                              's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                              'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1',
+                              '2', '3', '4', '5', '6', '7', '8', '9']
+                address = requests.get('https://i.imgur.com/removed.png')
+                while address.url == 'https://i.imgur.com/removed.png' or '.jpg' not in address.url:
+                    imgur = 'https://i.imgur.com/' + ''.join(
+                        random.choices(characters, weights=None, k=random.randint(5, 7))) + '.jpg'
+                    address = requests.get(imgur)
+                log = ['']
+                log.append(address.url)
+                log.append('')
+                log.append('')
+                return log
+            if 'PASS' in user.command and len(user.command) > 3:
+                if 'NUM' in user.command:
+                    characters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                    password = ''.join(random.choices(characters, weights=None, k=int(user.command[3])))
+                    if config.debug == 0:
+                        log = 'PLEASE CHECK YOUR PRIVATE MESSAGES.'
+                        return log
+                    return password
+                if 'LOW' in user.command:
+                    characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+                                  'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+                    password = ''.join(random.choices(characters, weights=None, k=int(user.command[3])))
+                    if config.debug == 0:
+                        log = 'PLEASE CHECK YOUR PRIVATE MESSAGES.'
+                        return log
+                    return password
+                if 'UPP' in user.command:
+                    characters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+                                  'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+                    password = ''.join(random.choices(characters, weights=None, k=int(user.command[3])))
+                    if config.debug == 0:
+                        log = 'PLEASE CHECK YOUR PRIVATE MESSAGES.'
+                        return log
+                    return password
+                if 'LET' in user.command:
+                    characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+                                  'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                                  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
+                                  'Z']
+                    password = ''.join(random.choices(characters, weights=None, k=int(user.command[3])))
+                    if config.debug == 0:
+                        log = 'PLEASE CHECK YOUR PRIVATE MESSAGES.'
+                        return log
+                    return password
+                if 'NOSYM' in user.command:
+                    characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+                                  'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                                  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
+                                  'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                    password = ''.join(random.choices(characters, weights=None, k=int(user.command[3])))
+                    if config.debug == 0:
+                        log = 'PLEASE CHECK YOUR PRIVATE MESSAGES.'
+                        return log
+                    return password
+                if 'ALL' in user.command:
+                    characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+                                  'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                                  'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
+                                  'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+                    randompassword = random.choices(characters, weights=None, k=int(user.command[3]))
+                    symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '.', ',', '?', '<', '>', '/', ';', ':', '"', '`', '~']
+                    for i in range(1, int(int(user.command[3])/3)):
+                        x = random.randint(0, len(randompassword) - 1)
+                        while randompassword[x] in symbols:
+                            x = random.randint(0, len(randompassword) - 1)
+                        randompassword[x] = random.choice(symbols)
+                    password = ''.join(randompassword)
+                    if config.debug == 0:
+                        log = 'PLEASE CHECK YOUR PRIVATE MESSAGES.'
+                        return log
+                    return password
         log = "'" + ' '.join(user.command) + "' IS UNKNOWN, USE 'HELP' FOR A LIST OF COMMANDS."
         return log
-
 
 class DebugMain:
     def __init__(self):
