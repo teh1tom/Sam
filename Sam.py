@@ -130,17 +130,10 @@ class Command:
                 log.append('')
                 return log
             if 'YOU' in user.command:
-                characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-                              's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-                              'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1',
-                              '2', '3', '4', '5', '6', '7', '8', '9']
-                address = requests.get('https://i.imgur.com/removed.png')
-                while address.url == 'https://i.imgur.com/removed.png' or '.jpg' not in address.url:
-                    imgur = 'https://i.imgur.com/' + ''.join(
-                        random.choices(characters, weights=None, k=random.randint(5, 7))) + '.jpg'
-                    address = requests.get(imgur)
+                characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_'
+                address = 'https://www.youtube.com/watch?v=' + ''.join(random.choices(characters, weights=None, k=random.randint(5, 7)))
                 log = ['']
-                log.append(address.url)
+                log.append(address)
                 log.append('')
                 log.append('')
                 return log
